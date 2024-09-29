@@ -13,51 +13,12 @@
 <div id="listaComentarios"></div>
 
 <script>
-/*comento la primera versión del javascript (la que guarda los comentarios en local)
-window.onload = cargarComentarios;
 
-function cargarComentarios() {
-  let comentarios = localStorage.getItem('comentarios');
-  if (comentarios) {
-    comentarios = JSON.parse(comentarios);
-    mostrarComentarios(comentarios);
-  }
-}
-
-function agregarComentario() {
-  let comentario = document.getElementById('comentario').value;
-  if (comentario.trim() === '') return; // Evitar comentarios vacíos
-
-  let comentarios = localStorage.getItem('comentarios');
-  if (comentarios) {
-    comentarios = JSON.parse(comentarios);
-  } else {
-    comentarios = [];
-  }
-
-  comentarios.push(comentario);
-  localStorage.setItem('comentarios', JSON.stringify(comentarios));
-
-  document.getElementById('comentario').value = ''; // Limpiar el textarea
-  mostrarComentarios(comentarios);
-}
-
-function mostrarComentarios(comentarios) {
-  let listaComentarios = document.getElementById('listaComentarios');
-  listaComentarios.innerHTML = ''; // Limpiar la lista antes de mostrar
-
-  for (let comentario of comentarios) {
-    let elementoComentario = document.createElement('p');
-    elementoComentario.textContent = comentario;
-    listaComentarios.appendChild(elementoComentario);
-  }
-}
-fin de bloque de código javascript para persistencia local */
 
 // ... a continuación código que introduce persistencia en github
 
 const token = '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'; // Reemplaza con tu token real
-const repoOwner = 'Martin-Amado-Castro'; // Reemplaza con tu nombre de usuario de GitHub
+const repoOwner = 'martin-amado-castro'; // Reemplaza con tu nombre de usuario de GitHub
 const repoName = 'martin-amado-castro.github.io'; // Reemplaza con el nombre de tu repositorio
 const filePath = 'persistencia.json';
 
