@@ -5,5 +5,54 @@
 </head>
 <body>
 <h1>Esta es la página inicial de prueba de Martín Amado Catro</h1> 
+
+<textarea id="comentario" placeholder="Escribe tu comentario aquí..."></textarea>
+<button onclick="agregarComentario()">Enviar comentario</button>
+
+<h2>Comentarios:</h2>
+<div id="listaComentarios"></div>
+
+<script>
+
+window.onload = cargarComentarios;
+
+function cargarComentarios() {
+  let comentarios = localStorage.getItem('comentarios');
+  if (comentarios) {
+    comentarios = JSON.parse(comentarios);
+    mostrarComentarios(comentarios);
+  }
+}
+
+function agregarComentario() {
+  let comentario = document.getElementById('comentario').value;
+  if (comentario.trim() === '') return; // Evitar comentarios vacíos
+
+  let comentarios = localStorage.getItem('comentarios');
+  if (comentarios) {
+    comentarios = JSON.parse(comentarios);
+  } else {
+    comentarios = [];
+  }
+
+  comentarios.push(comentario);
+  localStorage.setItem('comentarios', JSON.stringify(comentarios));
+
+  document.getElementById('comentario').value = ''; // Limpiar el textarea
+  mostrarComentarios(comentarios);
+}
+
+function mostrarComentarios(comentarios) {
+  let listaComentarios = document.getElementById('listaComentarios');
+  listaComentarios.innerHTML = ''; // Limpiar la lista antes de mostrar
+
+  for (let comentario of comentarios) {
+    let elementoComentario = document.createElement('p');
+    elementoComentario.textContent = comentario;
+    listaComentarios.appendChild(elementoComentario);
+  }
+}
+</script>
+  
 </body>
 </html>
